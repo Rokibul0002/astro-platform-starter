@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Md Rokibul Islam — Research & Job Portfolio</title>
+  <meta name="description" content="Portfolio of Md. Rokibul Islam — M.Sc. candidate in Applied Chemistry & Chemical Engineering. Research, projects, training, skills and contact.">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1724;
+      --card:#0b1220;
+      --glass: rgba(255,255,255,0.04);
+      --accent:#5b8def;
+      --accent-2:#6ee7b7;
+      --muted: #9aa4b2;
+      --max-width:1150px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:Inter,system-ui,Segoe UI,Roboto,Arial;
+      background: linear-gradient(180deg, #071021 0%, #081428 40%, #0b1724 100%);
+      color:#e6eef8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
+
+    /* layout */
+    .wrap{max-width:var(--max-width);margin:0 auto;padding:30px}
+    nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0;position:sticky;top:0;z-index:50;background:linear-gradient(180deg, rgba(3,7,14,0.55), rgba(3,7,14,0.15));backdrop-filter: blur(6px);border-bottom:1px solid rgba(255,255,255,0.03)}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--accent),#2b6ef7);display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;box-shadow:0 6px 18px rgba(43,110,247,0.18)}
+    .brand h1{font-size:1.05rem;margin:0}
+    .navlinks{display:flex;gap:12px;align-items:center}
+    .navlinks a{color:var(--muted);padding:8px 12px;border-radius:8px;transition:all .18s}
+    .navlinks a:hover{color:#fff;background:rgba(255,255,255,0.03)}
+
+    /* hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 300px 1fr;
+      gap:32px;
+      align-items:center;
+      padding:48px 0;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:14px;
+      padding:22px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.6);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .profile{
+      display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;
+      padding:28px;
+    }
+    .avatar{
+      width:140px;height:140px;border-radius:18px;overflow:hidden;display:inline-grid;place-items:center;
+      background:linear-gradient(135deg,#0ea5a4,#4b6cb7);
+      box-shadow: 0 8px 30px rgba(75,108,183,0.25);
+      position:relative;
+    }
+    .avatar svg{width:100%;height:100%}
+    .name{font-size:1.25rem;font-weight:700;margin-top:6px;color:#fff}
+    .title{font-size:0.95rem;color:var(--muted);margin-bottom:6px}
+    .contact{display:flex;flex-direction:column;gap:6px;font-size:0.92rem;color:var(--muted)}
+    .actions{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px}
+    .btn{background:linear-gradient(90deg,var(--accent),#3b82f6);color:#fff;padding:10px 14px;border-radius:10px;border:none;cursor:pointer;font-weight:600;box-shadow:0 8px 20px rgba(59,130,246,0.12)}
+    .btn.alt{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted)}
+    .btn.ghost{background:linear-gradient(90deg,var(--accent-2),#34d399);}
+
+    /* hero bio */
+    .bio{padding:26px 20px}
+    .bio h2{font-size:1.6rem;margin:0 0 8px 0;color:#fff}
+    .bio p{color:var(--muted);white-space:pre-line}
+    .socials{display:flex;gap:10px;margin-top:14px}
+    .chip{padding:8px 10px;background:rgba(255,255,255,0.02);border-radius:8px;font-size:0.9rem;color:var(--muted)}
+
+    /* sections */
+    section{margin-top:26px}
+    section h3{margin:0 0 12px 0;color:var(--accent);font-size:1.05rem}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+
+    /* research card specifics */
+    .research-card{padding:16px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03);box-shadow:0 8px 20px rgba(2,6,23,0.5)}
+    .research-card h4{margin:0 0 8px 0;color:#fff}
+    .research-card p{color:var(--muted);margin:0 0 8px 0;font-size:0.96rem}
+    .small{font-size:0.85rem;color:var(--muted)}
+
+    /* timeline */
+    .timeline{position:relative;padding-left:16px}
+    .timeline::before{content:'';position:absolute;left:8px;top:0;width:3px;height:100%;background:linear-gradient(var(--accent),#2b6ef7);opacity:0.18;border-radius:4px}
+    .tl-item{position:relative;padding:12px 12px 12px 28px;margin-bottom:10px;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.02)}
+    .tl-item::before{content:'';width:12px;height:12px;border-radius:50%;background:var(--accent);position:absolute;left:-2px;top:18px;box-shadow:0 6px 12px rgba(43,110,247,0.15)}
+
+    /* skills */
+    .skill{display:flex;flex-direction:column;gap:8px}
+    .skill .label{display:flex;justify-content:space-between;color:var(--muted);font-size:0.92rem}
+    .bar{height:10px;background:rgba(255,255,255,0.04);border-radius:999px;overflow:hidden}
+    .bar > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#34bbf0);width:40%;transition:width 1s ease}
+
+    /* awards and activities */
+    ul.list{list-style:none;padding-left:0;margin:0}
+    ul.list li{padding:8px 0;color:var(--muted)}
+
+    /* references */
+    .ref-card{padding:14px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03)}
+
+    footer{padding:36px 0;text-align:center;color:var(--muted);margin-top:24px;border-top:1px solid rgba(255,255,255,0.02)}
+
+    /* small screens */
+    @media (max-width:880px){
+      .hero{grid-template-columns:1fr; padding:18px 0}
+      .brand h1{font-size:0.95rem}
+      .avatar{width:120px;height:120px}
+      .wrap{padding:18px}
+    }
+
+    /* reveal animations */
+    .reveal{opacity:0;transform:translateY(18px);transition:all .6s cubic-bezier(.2,.9,.2,1)}
+    .reveal.visible{opacity:1;transform:none}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <div class="brand">
+        <div class="logo" aria-hidden>MR</div>
+        <div>
+          <h1 style="margin:0;font-size:1rem">Md. Rokibul Islam</h1>
+          <div style="font-size:0.85rem;color:var(--muted)">M.Sc. candidate — Applied Chemistry & Chemical Engineering</div>
+        </div>
+      </div>
+
+      <div class="navlinks" role="navigation" aria-label="Main menu">
+        <a href="#about">About</a>
+        <a href="#research">Research</a>
+        <a href="#education">Education</a>
+        <a href="#training">Training</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero" role="banner">
+      <aside class="card profile reveal">
+        <!-- Replace the SVG avatar below with your photo:
+             To use a photo, replace the <div class="avatar">...</div> with:
+             <img src="images/your-photo.jpg" alt="Md Rokibul Islam" style="width:140px;height:140px;border-radius:12px;object-fit:cover;">
+             and upload the image to the same folder as this index.html -->
+        <div class="avatar" aria-hidden>
+          <!-- decorative SVG avatar (placeholder) -->
+          <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+            <defs>
+              <linearGradient id="g" x1="0" x2="1">
+                <stop offset="0" stop-color="#06b6d4"/>
+                <stop offset="1" stop-color="#3b82f6"/>
+              </linearGradient>
+            </defs>
+            <rect width="120" height="120" rx="16" fill="url(#g)"/>
+            <text x="50%" y="57%" dominant-baseline="middle" text-anchor="middle" font-size="44" font-family="Inter,Arial" fill="#fff" font-weight="700">MR</text>
+          </svg>
+        </div>
+
+        <div class="name">MD. ROKIBUL ISLAM</div>
+        <div class="title">M.Sc. Candidate — Applied Chemistry & Chemical Engineering</div>
+
+        <div class="contact">
+          <div><strong>Address:</strong> Sreerampur, Shofipur-7320, Shailkupa, Jhenaidah, Dhaka, Bangladesh</div>
+          <div><strong>Email:</strong> <a href="mailto:mdrokibulislam0002@gmail.com" style="color:var(--accent)">mdrokibulislam0002@gmail.com</a></div>
+          <div><strong>Phone:</strong> <a href="tel:+8801737722473" style="color:var(--accent)">+8801737722473</a></div>
+        </div>
+
+        <div class="actions" role="group" aria-label="Quick actions">
+          <button class="btn" onclick="window.print()">Download / Print CV</button>
+          <a class="btn alt" href="mailto:mdrokibulislam0002@gmail.com">Email</a>
+          <a class="btn ghost" href="https://www.researchgate.net/profile/Md-Rokibul-Islam-4" target="_blank" rel="noopener">ResearchGate</a>
+        </div>
+      </aside>
+
+      <div class="card bio reveal" style="min-height:220px">
+        <h2 style="margin-top:0">Professional Profile</h2>
+        <p style="margin-top:8px;color:var(--muted)">
+M.Sc. candidate in Applied Chemistry & Chemical Engineering with expertise in environmental toxicology, trace metal dynamics, and applied analytical research. Experienced in multi-disciplinary research, laboratory experimentation, statistical analysis, and scientific writing. Seeking opportunities in chemical, pharmaceutical, or environmental industries to contribute technical knowledge and problem-solving skills.
+        </p>
+
+        <div class="socials" style="margin-top:16px">
+          <div class="chip"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/md-rokibul-islam-91a830202" target="_blank" rel="noopener" style="color:#fff">md-rokibul-islam-91a830202</a></div>
+          <div class="chip"><strong>ORCID:</strong> <a href="https://orcid.org/0009-0001-4438-2501" target="_blank" rel="noopener" style="color:#fff">0009-0001-4438-2501</a></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- RESEARCH -->
+    <section id="research" class="reveal">
+      <h3>Research & Projects</h3>
+      <div class="grid">
+        <article class="research-card">
+          <h4>M.Sc. Research — Trace Metal Dynamics in Agroecosystems (Ongoing)</h4>
+          <p class="small"><strong>Institution:</strong> Islamic University, Kushtia – Jhenaidah, Bangladesh<br>
+          <strong>Supervisor:</strong> Dr. Rafiquel Islam</p>
+          <p>Investigating the impact of irrigation practices on soil contamination and bioaccumulation of trace metals in seasonal crops. Responsibilities include field sampling, laboratory analyses, statistical health-risk assessment, and preparation of reports to support food safety and environmental policy recommendations.</p>
+        </article>
+
+        <article class="research-card">
+          <h4>Collaborative Research — Long-term Oral Contraceptive Practices (Apr 2024 – To be published)</h4>
+          <p class="small"><strong>Department:</strong> Applied Chemistry & Pharmacy<br>
+          <strong>Supervisor:</strong> Dr. Rafiquel Islam</p>
+          <p>Exploring physiological changes associated with prolonged oral contraceptive use, focusing on thyroid stimulating hormone (TSH) and serum glutamic-oxaloacetic transaminase (SGOT). Involved in study design, sample analysis, data interpretation, and manuscript preparation.</p>
+        </article>
+
+        <article class="research-card">
+          <h4>Collaborative Research — Bacterial Bioremediation of Emerging Contaminants (Ongoing)</h4>
+          <p class="small"><strong>Department:</strong> Applied Chemistry & Biotechnology<br>
+          <strong>Supervisor:</strong> Dr. Rafiquel Islam</p>
+          <p>Isolation, characterization, optimization, and validation of bacterial strains capable of degrading environmental contaminants. Contributions include laboratory culturing, pathway analysis, process optimization, and analytical validation for potential environmental applications.</p>
+        </article>
+
+        <article class="research-card">
+          <h4>Undergraduate Research — Antimicrobial & Antioxidant Activities (Jan 2024 – Present)</h4>
+          <p class="small"><strong>Supervisor:</strong> Prof. Dr. Md. Atiqur Rahman</p>
+          <p>Studied antimicrobial and antioxidant properties of organic extracts and essential oils from Sterculia foetida. Tasks included phytochemical screening, bioassays, data interpretation, and evaluation for potential therapeutic applications.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education" class="reveal">
+      <h3>Academic Credentials</h3>
+      <div class="grid">
+        <div class="card">
+          <h4>M.Sc. (Engg.) — Applied Chemistry & Chemical Engineering (2024 – Counting)</h4>
+          <p class="small">Islamic University, Kushtia — Research Focus: Environmental & Public Health. Status: Ongoing.</p>
+        </div>
+        <div class="card">
+          <h4>B.Sc. (Engg.) — Applied Chemistry & Chemical Engineering (2019 – 2024)</h4>
+          <p class="small">Islamic University, Kushtia — CGPA: 3.43 / 4.00 (Degree conferred in 2025)</p>
+        </div>
+        <div class="card">
+          <h4>HSC (2018) — Govt. Keshab Chandra College, Jessore Board</h4>
+          <p class="small">GPA: 4.42 / 5.00</p>
+        </div>
+        <div class="card">
+          <h4>SSC (2015) — Basantapur Secondary School, Jashore Board</h4>
+          <p class="small">GPA: 5.00 / 5.00</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TRAINING -->
+    <section id="training" class="reveal">
+      <h3>Training & Industrial Exposure</h3>
+      <div class="timeline">
+        <div class="tl-item">
+          <strong>Jun – Jul 2025</strong>
+          <div class="small"><strong>Square Toiletries Ltd.</strong> — Production & Quality Management; ISO 9001:2015 & ISO 22716:2007 (GMP).</div>
+          <div class="small">Role: Industrial Training Intern. Gained practical exposure to production and quality operations in an FMCG environment.</div>
+        </div>
+
+        <div class="tl-item">
+          <strong>May – Jun 2025</strong>
+          <div class="small"><strong>Shahjalal Fertilizer Company Ltd.</strong> — Chemical Process Operation; ammonia/urea production, reactor control, process optimization.</div>
+          <div class="small">Role: Industrial Training Intern. Hands-on exposure to large-scale production processes and process control.</div>
+        </div>
+
+        <div class="tl-item">
+          <strong>Dec 2023 – Jan 2024</strong>
+          <div class="small"><strong>Training Institute for Chemical Industries (TICI)</strong> — Process Unit Operation & Control; (Grade: A+; Cert. No.: 25355)</div>
+        </div>
+
+        <div class="tl-item">
+          <strong>Sep 2023</strong>
+          <div class="small">Workshop: Role of a Chemist in API Manufacturing Industries (Cert. 1059/23)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="reveal">
+      <h3>Technical Skills & Competencies</h3>
+      <div class="grid">
+        <div class="card skill">
+          <div class="label"><span>Laboratory & Analytical</span><span class="small">TGA, Optical Microscopy, Toxicology Assays</span></div>
+          <div class="bar"><i style="width:85%"></i></div>
+        </div>
+
+        <div class="card skill">
+          <div class="label"><span>Research Competencies</span><span class="small">Molecular Docking, ANOVA (Excel/SPSS)</span></div>
+          <div class="bar"><i style="width:78%"></i></div>
+        </div>
+
+        <div class="card skill">
+          <div class="label"><span>Digital Tools</span><span class="small">OriginLab, Adobe Illustrator, CanvaPro, MS Office</span></div>
+          <div class="bar"><i style="width:80%"></i></div>
+        </div>
+
+        <div class="card skill">
+          <div class="label"><span>Languages</span><span class="small">English (Fluent), Bengali (Native)</span></div>
+          <div class="bar"><i style="width:98%"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AWARDS -->
+    <section id="awards" class="reveal">
+      <h3>Awards & Achievements</h3>
+      <ul class="list card" style="padding:18px">
+        <li>Winner (Captain) — Inter-Session Cricket Tournament (2025)</li>
+        <li>Performer — Inter-Department Badminton Championship (2021 & 2024)</li>
+        <li>Scholarships: Primary Education Completion (2008), SSC Achievement (2015)</li>
+      </ul>
+    </section>
+
+    <!-- EXTRA CURRICULAR -->
+    <section id="activities" class="reveal">
+      <h3>Extra-curricular & Social Engagement</h3>
+      <ul class="list card" style="padding:18px">
+        <li>Event coordination: Departmental Reunion Program and API Manufacturing Workshop</li>
+        <li>Volunteer: Blood donation and humanitarian services (Tarunno &amp; Sheikhpara Blood Donor Club)</li>
+      </ul>
+    </section>
+
+    <!-- REFERENCES -->
+    <section id="references" class="reveal">
+      <h3>References</h3>
+      <div class="grid">
+        <div class="ref-card">
+          <strong>Dr. Rafiquel Islam</strong><br>
+          Associate Professor, Dept. of Applied Chemistry & Chemical Engineering, Islamic University Kushtia<br>
+          Honorary Lecturer, University of Newcastle, Australia<br>
+          Email: <a href="mailto:rafiq@acce.iu.ac.bd" style="color:var(--accent)">rafiq@acce.iu.ac.bd</a> / <a href="mailto:rafiquel.islam@newcastle.edu.au" style="color:var(--accent)">rafiquel.islam@newcastle.edu.au</a><br>
+          Phone: +8801761653376
+        </div>
+
+        <div class="ref-card">
+          <strong>Dr. Mohd. Maniruzzaman</strong><br>
+          Professor, Dept. of Applied Chemistry & Chemical Engineering, Islamic University Kushtia<br>
+          Email: <a href="mailto:maniruzzaman@acce.iu.ac.bd" style="color:var(--accent)">maniruzzaman@acce.iu.ac.bd</a><br>
+          Phone: +8801718449080
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="reveal">
+      <h3>Contact</h3>
+      <div class="card" style="display:flex;gap:18px;flex-wrap:wrap;align-items:center">
+        <div style="flex:1">
+          <div style="font-weight:700">MD. ROKIBUL ISLAM</div>
+          <div style="color:var(--muted)">Sreerampur, Shofipur-7320, Shailkupa, Jhenaidah, Dhaka, Bangladesh</div>
+          <div style="margin-top:8px">
+            <a href="mailto:mdrokibulislam0002@gmail.com" class="chip">mdrokibulislam0002@gmail.com</a>
+            <a href="tel:+8801737722473" class="chip" style="margin-left:8px">+8801737722473</a>
+          </div>
+        </div>
+        <div style="display:flex;gap:8px;align-items:center">
+          <a class="btn" href="https://www.linkedin.com/in/md-rokibul-islam-91a830202" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn alt" href="https://www.researchgate.net/profile/Md-Rokibul-Islam-4" target="_blank" rel="noopener">ResearchGate</a>
+          <a class="btn ghost" href="https://orcid.org/0009-0001-4438-2501" target="_blank" rel="noopener">ORCID</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="reveal">
+      <div style="opacity:0.8">© 2025 MD. Rokibul Islam — Built for research, jobs & scholarships. &nbsp; • &nbsp; Made with ❤️</div>
+    </footer>
+  </div>
+
+  <script>
+    // Reveal on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const obs = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    },{threshold:0.12});
+    reveals.forEach(r=>obs.observe(r));
+
+    // Smooth anchor scrolling for older browsers
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', function(e){
+        const href = this.getAttribute('href');
+        if(href.startsWith('#')){
+          e.preventDefault();
+          const el = document.querySelector(href);
+          if(el) el.scrollIntoView({behavior:'smooth', block:'start'});
+        }
+      });
+    });
+
+    // small accessibility: focus outline for keyboard users
+    document.addEventListener('keyup', function(e){
+      if(e.key === 'Tab') document.body.classList.add('show-focus');
+    });
+  </script>
+</body>
+</html>
